@@ -1,0 +1,39 @@
+﻿<Page x:Class="KioskApp.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:kioskapp="clr-namespace:KioskApp" d:DataContext="{d:DesignInstance Type=kioskapp:MainViewModel}"
+        Title="메인 화면"
+        mc:Ignorable="d">
+    <Page.Resources>
+        <!-- 모서리가 둥근 버튼 스타일 -->
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="20"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid Background="Green">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="식사하실 장소를 선택해주세요" FontWeight="Bold" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="포장" Command="{Binding TakeawayCommand}" Width="200" Height="500" Margin="10" FontSize="50" FontFamily="/Fonts/#배달의민족 한나체 Pro" Style="{StaticResource RoundedButtonStyle}"/>
+            <Button Content="매장 식사" Command="{Binding DineInCommand}" Width="200" Height="500" Margin="10" FontSize="50" FontFamily="/Fonts/#배달의민족 한나체 Pro" Style="{StaticResource RoundedButtonStyle}"/>
+        </StackPanel>
+        
+    </Grid>
+</Page>
